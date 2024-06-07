@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Simple</title>
+    <style>
+        /* Estilos para la calculadora */
+    /*  1. *HTML*: Utilizamos etiquetas semánticas como header, main, y section para estructurar la página. Dentro del section, tenemos un div para la pantalla de la calculadora y otro div para los botones.
+        2. *CSS*: Los estilos definen la apariencia de la calculadora, con un diseño centrado en la página, botones grandes y una pantalla para mostrar el valor actual.
+        3. *JavaScript*:
+        - displayValue: Variable para almacenar el valor mostrado en la pantalla.
+        - appendNumber(number): Añade un número al displayValue.
+        - appendOperator(operator): Añade un operador al displayValue.
+        - updateDisplay(): Actualiza el contenido de la pantalla con el valor actual de displayValue.
+        - calculateResult(): Evalúa la expresión matemática en displayValue y actualiza la pantalla con el resultado.
+        - clearDisplay(): Limpia el displayValue y actualiza la pantalla. */
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .calculator {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .display {
+            font-size: 2em;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: right;
+            border-radius: 5px;
+            background-color: #e6e6e6;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 20px;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 5px;
+            background-color: #d4d4d4;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculadora Simple de Manu</h1>
+    </header>
+    <main>
+        <!-- Contenedor de la calculadora -->
+        <section class="calculator">
+            <!-- Pantalla de la calculadora -->
+            <div class="display" id="display"></div>
+            <!-- Botones de la calculadora -->
+            <div class="buttons">
+                <button class="btn" onclick="appendNumber('7')">7</button>
+                <button class="btn" onclick="appendNumber('8')">8</button>
+                <button class="btn" onclick="appendNumber('9')">9</button>
+                <button class="btn" onclick="appendOperator('/')">/</button>
+                <button class="btn" onclick="appendNumber('4')">4</button>
+                <button class="btn" onclick="appendNumber('5')">5</button>
+                <button class="btn" onclick="appendNumber('6')">6</button>
+                <button class="btn" onclick="appendOperator('*')">*</button>
+                <button class="btn" onclick="appendNumber('1')">1</button>
+                <button class="btn" onclick="appendNumber('2')">2</button>
+                <button class="btn" onclick="appendNumber('3')">3</button>
+                <button class="btn" onclick="appendOperator('-')">-</button>
+                <button class="btn" onclick="appendNumber('0')">0</button>
+                <button class="btn" onclick="appendNumber('.')">.</button>
+                <button class="btn" onclick="calculateResult()">=</button>
+                <button class="btn" onclick="appendOperator('+')">+</button>
+                <button class="btn" onclick="clearDisplay()">C</button>
+            </div>
+        </section>
+    </main>
+    <script>
+        // Variable para almacenar el valor actual de la pantalla
+        let displayValue = "";
+
+        // Función para añadir un número a la pantalla
+        function appendNumber(number) {
+            displayValue += number;
+            updateDisplay();
+        }
+
+        // Función para añadir un operador a la pantalla
+        function appendOperator(operator) {
+            displayValue += operator;
+            updateDisplay();
+        }
+
+        // Función para actualizar el contenido de la pantalla
+        function updateDisplay() {
+            document.getElementById('display').innerText = displayValue;
+        }
+
+        // Función para calcular el resultado de la operación
+        function calculateResult() {
+            try {
+                // Evalúa la expresión en displayValue
+                displayValue = eval(displayValue);
+                updateDisplay();
+            } catch (error) {
+                // Si hay un error (p.ej., expresión inválida), muestra un mensaje de error
+                // Explicación del Código
+
+                displayValue = "Error";
+                updateDisplay();
+            }
+        }
+
+        // Función para limpiar la pantalla
+        function clearDisplay() {
+            displayValue = "";
+            updateDisplay();
+        }
+    </script>
+</body>
+
+
+</html>
+
